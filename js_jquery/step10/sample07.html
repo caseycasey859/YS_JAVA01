@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <div>
+        <h1>AJAX예제</h1>
+        <p id="main"></p>
+    </div>
+    <script>
+        $(function(){
+            getData();
+        });
+
+        function getData(){
+            $.get("testdata.txt",successFn)
+             .fail(errorFn)
+             .always(completeFn);
+        }
+        function successFn(result){
+            $('#main').append(result+"<br>");
+        }
+        function errorFn(xhr, status, strErr){
+            $('#main').append("error:"+strErr+ "<br>");
+        }
+        function completeFn(){
+            $('#main').append("=>작업이 완료됨.<br>");
+        }
+    </script>
+    
+</body>
+</html>
